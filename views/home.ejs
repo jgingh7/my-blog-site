@@ -2,16 +2,19 @@
 
 <h1>Home</h1>
 
-<p><%= homeStartingContent %></p>
+<p>Hi! Welcome to my Blog!</p>
+<p>I will be posting some stuff that I find interesting</p>
+<p>which will mostly be about technical new, reviews, problem solutions and more.</p>
 
 <% posts.forEach(function(post) { %>
   <h2><%= post.title %></h2>
   <% var homeContent = post.content %>
   <% if (homeContent.length <= 100) { %>
-    <p><%= homeContent %><a href="/posts/<%= post.title %>">Read More</a></p>
+    <% homeContent = homeContent + " "; %>
+    <p><%= homeContent %><a href="/posts/<%= post.address %>">Read More</a></p>
   <% } else { %>
-  <% homeContent = homeContent.substring(0, 100) + " ..."; %>
-    <p><%= homeContent %><a href="/posts/<%= post.title %>">Read More</a></p>
+  <% homeContent = homeContent.substring(0, 100) + " ... "; %>
+    <p><%= homeContent %><a href="/posts/<%= post.address %>">Read More</a></p>
   <% } %>
 
 <% }) %>

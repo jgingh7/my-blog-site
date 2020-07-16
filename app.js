@@ -15,7 +15,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-mongoose.connect("//mongodb://localhost:27017/blogPostDB", {
+
+//mongodb+srv://admin-jin:<password>@clustertodolist.sbqc3.mongodb.net/<dbname>?retryWrites=true&w=majority
+mongoose.connect("mongodb+srv://admin-jin:q9LG1ymsaUrWcoAl@clustertodolist.sbqc3.mongodb.net/blogPostDB?retryWrites=true&w=majority/", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -106,7 +108,10 @@ app.post("/compose", function(req, res) { //need to implement if same title, nee
   });
 });
 
-
-app.listen(3500, function() {
-  console.log("Server started on port 3500");
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8500;
+}
+app.listen(port, function() {
+  console.log("Server has started successfully.");
 });
